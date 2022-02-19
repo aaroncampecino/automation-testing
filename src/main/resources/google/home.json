@@ -1,0 +1,17 @@
+{
+  "home":
+    {
+      "home_image" : {
+        "xpath" : "//img[@class='lnXdpd']",
+        "type" : "IMAGE"
+      },
+      "search_input_text" : {
+        "xpath" : "//input[@name='q']",
+        "type" : "INPUT_TEXT"
+      },
+      "search_button" : {
+        "xpath" : "//div[@class='FPdoLc lJ9FBc']//input[@name='btnK']",
+        "type" : "BUTTON"
+      }
+    }
+}

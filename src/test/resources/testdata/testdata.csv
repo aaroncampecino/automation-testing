@@ -1,0 +1,3 @@
+Steps                   ,ScreenName,ElementName      ,Value
+I search for Avengers   ,home      ,search_input_text,Avengers
+I click on search button,home      ,search_button    ,
