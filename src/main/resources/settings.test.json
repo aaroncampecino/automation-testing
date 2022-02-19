@@ -1,3 +1,4 @@
 {
-  "objectsPath" : "/src/main/resources/google/"
+  "objectsPath" : "/src/main/resources/google/",
+  "autoCloseBrowser" : false
 }

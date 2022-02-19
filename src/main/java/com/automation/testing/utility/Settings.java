@@ -35,7 +35,9 @@ public class Settings {
      * }
      * @return the setting defined in settings.test.json
      * */
-    public String getSetting(String name){
-        return settingsFile.getValue(name).toString();
+    public Object getSetting(String name){
+        return settingsFile.getValue(name);
     }
+
+
 }
