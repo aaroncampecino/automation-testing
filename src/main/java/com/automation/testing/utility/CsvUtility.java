@@ -77,7 +77,7 @@ public class CsvUtility {
      * @return the list of TestSteps object
      * */
 
-    public static List<TestSteps> buildTestSteps(Path path) throws IOException {
+    public static List<TestSteps> buildTestSteps(String path) throws IOException {
         return buildTestSteps(path, "default");
     }
 
@@ -87,13 +87,16 @@ public class CsvUtility {
      * @param environment specifies the environment to use
      * @return the list of TestSteps object
      * */
-    public static List<TestSteps> buildTestSteps(Path path, String environment) throws IOException {
+    public static List<TestSteps> buildTestSteps(String path, String environment) throws IOException {
         List<TestSteps> stepsList = new ArrayList<>();
 
         if(StringUtils.isBlank(environment))
             environment = "default";
 
-        Reader reader = Files.newBufferedReader(path);
+        var file = new File(path).getAbsolutePath();
+        Path paths = Paths.get(file);
+
+        Reader reader = Files.newBufferedReader(paths);
 
         CSVReader csvReader = new CSVReader(reader);
         String[] line;
@@ -118,10 +121,10 @@ public class CsvUtility {
 
     private static TestSteps getTestSteps(String[] line, int valueIndex){
         TestSteps testSteps = new TestSteps();
-        testSteps.setStep(line[0]);
-        testSteps.setScreenName(line[1]);
-        testSteps.setElementName(line[2]);
-        testSteps.setValue(line[valueIndex]);
+        testSteps.setStep(StringUtils.trimToEmpty(line[0]));
+        testSteps.setScreenName(StringUtils.trimToEmpty(line[1]));
+        testSteps.setElementName(StringUtils.trimToEmpty(line[2]));
+        testSteps.setValue(StringUtils.trimToEmpty(line[valueIndex]));
         return testSteps;
     }
 

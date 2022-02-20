@@ -2,8 +2,11 @@ package com.automation.testing.definitions;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.browser.Browser;
+import com.automation.testing.core.StepsService;
 import com.automation.testing.core.TestArtifacts;
+import com.automation.testing.core.exception.FrameworkException;
 import com.automation.testing.model.KeyValuePair;
+import com.automation.testing.model.TestSteps;
 import com.automation.testing.utility.CsvUtility;
 import com.automation.testing.utility.Properties;
 import io.cucumber.java.After;
@@ -52,8 +55,19 @@ public class BrowserStepDefinition extends BaseStepDefinition{
     }
 
     @Then("I execute test steps from {string}")
-    public void executeSteps(String path) {
+    public void executeSteps(String path) throws IOException, FrameworkException {
+        if(skipTest()){
+            LOGGER.info("Skipping test");
+            return;
+        }
         LOGGER.info("Executing test steps from "+path);
+
+        String environment = properties.getEnvironment();
+        List<TestSteps> testSteps = CsvUtility.buildTestSteps(path, environment);
+
+        StepsService stepsService = new StepsService()
+                .setTestSteps(testSteps);
+        stepsService.executeProcess();
     }
 
     @Then("I initialize fixture from {string}")

@@ -1,8 +1,8 @@
 {
-  "home":
+  "page":
     {
       "home_image" : {
-        "xpath" : "//img[@class='lnXdpd']",
+        "xpath" : "aaaaaaaaa//img[@class='lnXdpd']",
         "type" : "IMAGE"
       },
       "search_input_text" : {
