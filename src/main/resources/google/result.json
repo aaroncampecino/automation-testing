@@ -1,0 +1,8 @@
+{
+  "result": {
+    "search_result": {
+      "xpath": "(//h3[contains(text(),'Avengers')])[1]",
+      "type": "LINK"
+    }
+  }
+}

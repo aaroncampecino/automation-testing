@@ -1,3 +1,4 @@
-Steps                   ,ScreenName,ElementName      ,Default_Value ,Dev_Value,test_Value
-I search for Avengers   ,home      ,search_input_text,Avengers      ,Batman   ,Captain America
-I click on search button,home      ,search_button    ,Digital Comics,Robin    ,Iron Man
+Steps                   ,ScreenName,ElementName      ,Default_Value,Dev_Value,test_Value
+I search for Avengers   ,home      ,search_input_text,Avengers     ,Avengers ,Captain America
+I click on search button,home      ,search_button    ,             ,         ,
+I click on result link  ,result    ,search_result    ,             ,         ,
