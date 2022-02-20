@@ -1,2 +1,2 @@
 # automation-testing
-Automation Testing using Cucumber, RestAssured
+Automation Testing using Selenium, Cucumber, RestAssured
