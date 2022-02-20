@@ -14,7 +14,7 @@ public class TestArtifacts {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestArtifacts.class);
 
     private static TestArtifacts instance;
-    private Map<String, String> artifacts = new HashMap<>();
+    private Map<String, String> artifacts = new TreeMap<>();
 
     private TestArtifacts(){}
 
@@ -36,8 +36,8 @@ public class TestArtifacts {
     }
 
     public void addKeyValuePair(List<KeyValuePair> keyValuePairList){
-        keyValuePairList.forEach(e->{
-            putArtifacts(e.getKey(),e.getValue());
+        keyValuePairList.stream().filter(e->e.getKey()!=null && e.getValue()!= null).forEach(e->{
+            putArtifacts(e.getKey().trim(),e.getValue().trim());
         });
     }
 
@@ -53,6 +53,7 @@ public class TestArtifacts {
         List<String> row;
 
         for (var entry : artifacts.entrySet()) {
+
             row = new ArrayList<>();
             row.add(entry.getKey());
             row.add(entry.getValue());

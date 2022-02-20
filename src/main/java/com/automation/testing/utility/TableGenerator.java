@@ -10,17 +10,17 @@ import java.util.Map;
 
 public class TableGenerator {
     private static final Logger LOGGER = LoggerFactory.getLogger(TableGenerator.class);
-    private static final int PADDING_SIZE = 2;
-    private static final String NEW_LINE = "\n";
+    private static final int PADDING_SIZE = 1;
+    private static final String NEW_LINE = System.getProperty("line.separator");
     private static final String TABLE_JOINT_SYMBOL = "+";
     private static final String TABLE_V_SPLIT_SYMBOL = "|";
     private static final String TABLE_H_SPLIT_SYMBOL = "-";
 
-    public static void generateTable(List<String> headersList, List<List<String>> rowsList,int... overRiddenHeaderHeight)
+    public static void generateTable(List<String> headersList, List<List<String>> rowsList)
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        int rowHeight = overRiddenHeaderHeight.length > 0 ? overRiddenHeaderHeight[0] : 1;
+        int rowHeight = 1;
 
         Map<Integer,Integer> columnMaxWidthMapping = getMaximumWidhtofTable(headersList, rowsList);
 

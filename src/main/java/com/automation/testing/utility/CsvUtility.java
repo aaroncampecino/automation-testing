@@ -24,6 +24,15 @@ import java.util.List;
 public class CsvUtility {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CsvUtility.class);
+    private static boolean hasHeader = true;
+
+    /**
+     * if hasHeader is true, then remove the header
+     * Default is true
+     * */
+    public static void setHasHeader(boolean hasHeader) {
+        CsvUtility.hasHeader = hasHeader;
+    }
 
     /**
      * @param path path where csv is located
@@ -40,15 +49,15 @@ public class CsvUtility {
      * @param mappingStrategy example ColumnPositionMappingStrategy
      * @return a list of key-value pairs
      * */
-    public static List<KeyValuePair> buildKeyValueMapping(String strPath, Class clazz, MappingStrategy mappingStrategy) throws IOException {
+    public static List<KeyValuePair> buildKeyValueMapping(String path, Class clazz, MappingStrategy mappingStrategy) throws IOException {
 
         mappingStrategy.setType(clazz);
 
-        var file = new File(strPath).getAbsolutePath();
+        var file = new File(path).getAbsolutePath();
 
-        Path path = Paths.get(file);
+        Path paths = Paths.get(file);
 
-        Reader reader = Files.newBufferedReader(path);
+        Reader reader = Files.newBufferedReader(paths);
         CsvToBean cb = new CsvToBeanBuilder(reader).withType(clazz)
                 .withMappingStrategy(mappingStrategy)
                 .build();
@@ -57,6 +66,8 @@ public class CsvUtility {
 
         reader.close();
 
+        if(hasHeader)
+            pairs.remove(0);
         return pairs;
     }
 
