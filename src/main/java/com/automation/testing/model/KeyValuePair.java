@@ -1,21 +1,20 @@
 package com.automation.testing.model;
 
-import com.automation.testing.utility.CsvBean;
 import com.opencsv.bean.CsvBindByPosition;
 
-public class Fixture{
+public class KeyValuePair{
     @CsvBindByPosition(position = 0)
-    private String name;
+    private String key;
 
     @CsvBindByPosition(position = 1)
     private String value;
 
-    public String getName() {
-        return name;
+    public String getKey() {
+        return key;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getValue() {
