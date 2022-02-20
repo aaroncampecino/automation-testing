@@ -2,9 +2,9 @@ package com.automation.testing.model;
 
 public class TestSteps {
     private String step;
-    private String xpath;
+    private String screenName;
+    private String elementName;
     private String value;
-    private String action;
 
     public String getStep() {
         return step;
@@ -14,12 +14,20 @@ public class TestSteps {
         this.step = step;
     }
 
-    public String getXpath() {
-        return xpath;
+    public String getScreenName() {
+        return screenName;
     }
 
-    public void setXpath(String xpath) {
-        this.xpath = xpath;
+    public void setScreenName(String screenName) {
+        this.screenName = screenName;
+    }
+
+    public String getElementName() {
+        return elementName;
+    }
+
+    public void setElementName(String elementName) {
+        this.elementName = elementName;
     }
 
     public String getValue() {
@@ -28,13 +36,5 @@ public class TestSteps {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
     }
 }
