@@ -9,6 +9,7 @@ import com.automation.testing.model.KeyValuePair;
 import com.automation.testing.model.TestSteps;
 import com.automation.testing.utility.CsvUtility;
 import com.automation.testing.utility.Properties;
+import com.opencsv.exceptions.CsvValidationException;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -55,7 +56,7 @@ public class BrowserStepDefinition extends BaseStepDefinition{
     }
 
     @Then("I execute test steps from {string}")
-    public void executeSteps(String path) throws IOException, FrameworkException {
+    public void executeSteps(String path) throws IOException, FrameworkException, CsvValidationException {
         if(skipTest()){
             LOGGER.info("Skipping test");
             return;

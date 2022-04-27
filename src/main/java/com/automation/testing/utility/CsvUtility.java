@@ -1,6 +1,5 @@
 package com.automation.testing.utility;
 
-import com.automation.testing.core.TestArtifacts;
 import com.automation.testing.model.KeyValuePair;
 import com.automation.testing.model.TestSteps;
 import com.opencsv.CSVReader;
@@ -8,6 +7,7 @@ import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.MappingStrategy;
+import com.opencsv.exceptions.CsvValidationException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +77,7 @@ public class CsvUtility {
      * @return the list of TestSteps object
      * */
 
-    public static List<TestSteps> buildTestSteps(String path) throws IOException {
+    public static List<TestSteps> buildTestSteps(String path) throws IOException, CsvValidationException {
         return buildTestSteps(path, "default");
     }
 
@@ -87,7 +87,7 @@ public class CsvUtility {
      * @param environment specifies the environment to use
      * @return the list of TestSteps object
      * */
-    public static List<TestSteps> buildTestSteps(String path, String environment) throws IOException {
+    public static List<TestSteps> buildTestSteps(String path, String environment) throws IOException, CsvValidationException {
         List<TestSteps> stepsList = new ArrayList<>();
 
         if(StringUtils.isBlank(environment))

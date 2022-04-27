@@ -4,17 +4,21 @@ import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.interfaces.*;
 import com.automation.testing.constant.ElementType;
 import com.automation.testing.core.exception.FrameworkException;
+import com.automation.testing.definitions.BrowserStepDefinition;
 import com.automation.testing.model.TestSteps;
 import com.automation.testing.utility.Properties;
 import com.automation.testing.utility.TableGenerator;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class StepsService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StepsService.class);
 
     private List<TestSteps> testSteps;
     private WebDriver webDriver;
@@ -48,7 +52,9 @@ public class StepsService {
         ElementType elementType;
         IElementFactory elementFactory = AqualityServices.getElementFactory();
         for (TestSteps testStep : testSteps) {
+
             steps = testStep.getStep();
+            LOGGER.info("Executing steps : "+steps);
             screenName = testStep.getScreenName();
             elementName = testStep.getElementName();
             value = testStep.getValue();
